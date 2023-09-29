@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdController;
 use App\Http\Controllers\EmailsController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\DownFileController;
 use App\Mail\WelcomeMail;
 
 
@@ -31,3 +33,8 @@ Route::put('/product/{product}/update', [ProdController::class, 'update'])->name
 Route::delete('/product/{product}/destroy', [ProdController::class, 'destroy'])->name('product.destroy');*/
 
 Route::get('/email', [EmailsController::class, 'email']);
+
+Route::get('/upload-file', [UploadController::class, 'createForm']);
+Route::post('/upload-file', [UploadController::class, 'fileUpload'])->name('fileUpload');
+Route::get('/file', [DownFileController::class, 'showFileList']);
+Route::get('download/{filePath}', [DownFileController::class, 'downloader'])->name('file.downloader');
