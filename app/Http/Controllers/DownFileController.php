@@ -22,9 +22,9 @@ class DownFileController extends Controller
             if (!is_dir($extractPath)) {
                 mkdir($extractPath, 0755, true);
             }
-
-            $zip = new ZipArchive();
-            if ($zip->open($zipFilePath) === true) {
+            
+            $zip = new ZipArchive;
+                if ($zip->open($zipFilePath) === true) {
                 $zip->extractTo($extractPath);
                 $zip->close();
 
